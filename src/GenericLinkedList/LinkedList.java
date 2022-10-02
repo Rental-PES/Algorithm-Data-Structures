@@ -54,6 +54,7 @@ public class LinkedList<T> {
         }
         if (index - 1 == pos) {
             current.next = new Node<>(data);
+            return;
         } else {
             System.out.println("\nINDEX DOESNT EXIST!!! CAN'T ADD NEW DATA!");
         }
@@ -73,6 +74,24 @@ public class LinkedList<T> {
         return null;
     }
 
+    public void delete (int index) {
+        if (index == 0) {
+            head = head.next;
+            return;
+        }
+        Node<T> current = head;
+        int pos = 0;
+        while (current.next != null) {
+            if (index - 1 == pos) {
+                current.next = current.next.next;
+                return;
+            } else
+                pos++;
+            current = current.next;
+        }
+        System.out.println("\nINDEX DOESNT EXIST!!! CAN'T DELETE THE DATA!");
+    }
+
 }
 
 class Node<T> {
@@ -83,5 +102,4 @@ class Node<T> {
         this.data = data;
     }
 }
-
 
