@@ -1,6 +1,16 @@
 package GenericLinkedList;
 
 public class LinkedList<T> {
+    private static class Node<T> {
+        T data;
+        Node<T> next;
+
+        Node() {}
+        Node(T data) {
+            this.data = data;
+        }
+    }
+
     Node<T> head;
 
     public void addBack(T data) {
@@ -13,6 +23,17 @@ public class LinkedList<T> {
             current = current.next;
         }
         current.next = new Node<>(data);
+    }
+
+    public void addFront(T data) {
+        if (head == null) {
+            head = new Node<>(data);
+            return;
+        }
+
+        Node<T> temp = new Node<>(data);
+        temp.next = head;
+        head = temp;
     }
 
     public void printAll() {
@@ -32,15 +53,16 @@ public class LinkedList<T> {
         System.out.println("]");
     }
 
-    public void insert(int index, T data) {
+    public void add(T data) {
+        addBack(data);
+    }
+
+    public void add(int index, T data) {
         Node<T> current = head;
         Node<T> temp;
         int pos = 0;
         if (index == 0) {
-            temp = head;
-            head = new Node<>(data);
-            head.next = temp;
-            return;
+            addFront(data);
         }
         while (current.next != null) {
             if (index - 1 == pos) {
@@ -54,10 +76,21 @@ public class LinkedList<T> {
         }
         if (index - 1 == pos) {
             current.next = new Node<>(data);
-            return;
         } else {
-            System.out.println("\nINDEX DOESNT EXIST!!! CAN'T ADD NEW DATA!");
+            System.out.println("\nINDEX DOESN'T EXIST!!! CAN'T ADD NEW DATA!");
         }
+    }
+
+    public T begin() {
+        return head.data;
+    }
+
+    public T end() {
+        Node<T> current = head;
+        while (current.next != null) {
+            current = current.next;
+        }
+        return current.data;
     }
 
     public T get(int index) {
@@ -70,11 +103,23 @@ public class LinkedList<T> {
                 pos++;
             current = current.next;
         }
-        System.out.println("\nINDEX DOESNT EXIST!!! CAN'T GET THE DATA!");
+        System.out.println("\nINDEX DOESN'T EXIST!!! CAN'T GET THE DATA!");
         return null;
     }
 
-    public void delete (int index) {
+    public void popBack() {
+        Node<T> current = head;
+        while (current.next.next != null) {
+            current = current.next;
+        }
+        current.next = null;
+    }
+
+    public void popFront() {
+        head = head.next;
+    }
+
+    public void delete(int index) {
         if (index == 0) {
             head = head.next;
             return;
@@ -89,17 +134,52 @@ public class LinkedList<T> {
                 pos++;
             current = current.next;
         }
-        System.out.println("\nINDEX DOESNT EXIST!!! CAN'T DELETE THE DATA!");
+        System.out.println("\nINDEX DOESN'T EXIST!!! CAN'T DELETE THE DATA!");
+    }
+
+    public void clear() {
+        Node<T> current = head;
+        Node<T> temp;
+        while (current != null) {
+            temp = current;
+            current = current.next;
+            temp.next = null;
+        }
+        head = null;
+    }
+
+    public int size() {
+        Node<T> current = head;
+        int size = 0;
+        while (current != null) {
+            if (current.data != null)
+                size++;
+            current = current.next;
+        }
+        return size;
+    }
+
+    public int capacity() {
+        Node<T> current = head;
+        int capacity = 0;
+        while (current != null) {
+            capacity++;
+            current = current.next;
+        }
+        return capacity;
+    }
+
+    public void resize(int size) {
+        Node<T> current = head;
+        int cap = capacity();
+        while (current.next != null) {
+            current = current.next;
+        }
+        while (cap < size) {
+            current.next = new Node<>();
+            current = current.next;
+            cap++;
+        }
     }
 
 }
-
-class Node<T> {
-    T data;
-    Node<T> next;
-
-    Node(T data) {
-        this.data = data;
-    }
-}
-
