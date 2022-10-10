@@ -14,60 +14,60 @@ public class LinkedListTail {
 
     }
 
-    private  Node first;
-    private  Node last;
+    private  Node head;
+    private  Node tail;
     private  int size = 0;
 
 
-    //addLast
-    public  void addLast(int item){
+    //addTail
+    public  void addTail(int item){
         var node = new Node(item);
         if (isEmpty())
-            first = last = node;
+            head = tail = node;
         else {
-            last.next = node;
-            last = node;
+            tail.next = node;
+            tail = node;
         }
         size++;
     }
-    //addFirst
-    public void addFirst(int item){
+    //addHead
+    public void addHead(int item){
         var node =  new Node(item);
-        if (first == null) first = last = node;
+        if (head == null) head = tail = node;
         else{
-            node.next = first;
-            first = node;
+            node.next = head;
+            head = node;
         }
         size++;
     }
 
-    //deleteFirst
-    public void removeFirst(){
+    //deleteHead
+    public void removeHead(){
         if (isEmpty()) throw  new NoSuchElementException();
-        if (first == last){
-            first = last = null;
+        if (head == tail){
+            head = tail = null;
         } else {
-            var second = first.next;
-            first.next = null;
-            first = second;
+            var second = head.next;
+            head.next = null;
+            head = second;
         }
         size--;
     }
-    //deleteLast
-    public  void  removeLast(){
+    //deleteTail
+    public  void  removeTail(){
         if (isEmpty()) throw  new NoSuchElementException();
-        if (first == last){
-            first = last = null;
+        if (head == tail){
+            head = tail = null;
         } else{
-            var previous = getPrevious(last);
-            last = previous;
-            last.next = null;
+            var previous = getPrevious(tail);
+            tail = previous;
+            tail.next = null;
         }
         size--;
     }
 
     private  Node getPrevious(Node node){
-        var current = first;
+        var current = head;
         while (current != null){
             if (current.next == node) return  current;
             current = current.next;
@@ -83,7 +83,7 @@ public class LinkedListTail {
     //indexOf
     public int indexOf(int item){
         int index = 0;
-        var current = first;
+        var current = head;
         while (current != null){
             if (current.value == item) return index;
             current = current.next;
@@ -94,7 +94,7 @@ public class LinkedListTail {
 
     public int[] toArray(){
         int[] array = new int[size];
-        var current = first;
+        var current = head;
 
         var index = 0;
         while (current != null){
@@ -115,8 +115,8 @@ public class LinkedListTail {
         // p     c      n
         // n = c.next
         // c.next = p 10 <-20
-        var previous = first;
-        var current = first.next;
+        var previous = head;
+        var current = head.next;
 
         while (current != null){
             var next = current.next;
@@ -125,18 +125,18 @@ public class LinkedListTail {
             current = next;
         }
 
-        last = first;
-        last.next = null;
-        first = previous;
+        tail = head;
+        tail.next = null;
+        head = previous;
 
     }
 
     private  boolean isEmpty(){
-        return  first == null;
+        return  head == null;
     }
 
-    void printAll(LinkedListTail list){
-        Node node = list.first;
+    void printAll(){
+        Node node = head;
         while (true){
             if(node != null) {
                 System.out.println(node.value);
