@@ -2,43 +2,40 @@ package RawStack;
 import java.util.NoSuchElementException;
 
 public class Stack {
-    private  Node first;
-    private  Node last;
+    private  Node top;
+    private  Node bottom;
 
     private  int size = 0;
-    private  class Node{
-        private Object value;
-        private Node next;
 
-        Node(Object value){
-            this.value = value;
-        }
+    public Node getTop(){
+        return top;
     }
+
 
     public void push(Object value){
         var node = new Node(value);
-        if (first == null) first = last = node;
+        if (top == null) top = bottom = node;
         else{
-            node.next = first;
-            first = node;
+            node.next = top;
+            top = node;
         }
         size++;
     }
 
     public Object pop(){
         if (isEmpty()) throw new NoSuchElementException();
-        var popItem = first;
-        if (first == last) first = last = null;
+        var popItem = top;
+        if (top == bottom) top = bottom = null;
         else {
-            var second = first.next;
-            first.next = null;
-            first = second;
+            var second = top.next;
+            top.next = null;
+            top = second;
         }
         return popItem.value;
     }
 
-    public  void printAll(Stack stack){
-        Node node = stack.first;
+    public  void printAll(){
+        Node node = top;
         while (true){
             if(node != null) {
                 System.out.println(node.value);
@@ -47,8 +44,8 @@ public class Stack {
             else break;
         }
     }
-    private  boolean isEmpty(){
-        return  first == null;
+    public   boolean isEmpty(){
+        return  top == null;
     }
 
 }
