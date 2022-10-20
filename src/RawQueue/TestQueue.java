@@ -1,4 +1,6 @@
-package RawStack;
+package RawQueue;
+
+import RawQueue.Queue;
 
 public class TestQueue {
     public static void main(String[] args) {
