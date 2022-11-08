@@ -182,4 +182,44 @@ public class LinkedList<T> {
         }
     }
 
+    public void swap(int index1, int index2) {
+        if (index1 == index2)
+            return;
+
+        Node<T> prevX = getObj(index1 - 1), currX = getObj(index1);
+
+        Node<T> prevY = getObj(index2 - 1), currY = getObj(index2);
+
+        if (currX == null || currY == null)
+            return;
+
+        if (prevX != null)
+            prevX.next = currY;
+        else
+            head = currY;
+
+        if (prevY != null)
+            prevY.next = currX;
+        else
+            head = currX;
+
+        Node<T> temp = currX.next;
+        currX.next = currY.next;
+        currY.next = temp;
+    }
+
+    public Node<T> getObj(int index) {
+        Node<T> current = head;
+        int pos = 0;
+        while (current != null) {
+            if (index == pos) {
+                return current;
+            } else
+                pos++;
+            current = current.next;
+        }
+        System.out.println("\nINDEX DOESN'T EXIST!!! CAN'T GET THE DATA!");
+        return null;
+    }
+
 }
