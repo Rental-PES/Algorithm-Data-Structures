@@ -1,12 +1,11 @@
-package RawStack;
+package InfixToPrefix;
 
 public class Node {
 
-    public Object value;
+    public char value;
     public Node next;
 
-    Node(Object value){
+    Node(char value){
         this.value = value;
     }
 }
-

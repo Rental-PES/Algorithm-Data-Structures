@@ -1,4 +1,5 @@
-package RawStack;
+package InfixToPostfix;
+
 import java.util.NoSuchElementException;
 
 public class Stack {
