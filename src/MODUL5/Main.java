@@ -30,7 +30,7 @@ public class Main {
         family.nextToLeft();
         family.setLeft("Uno");
         family.backToParent();
-        family.setLeft("Shafa");
+        family.setRight("Shafa");
 
         family.backToParent();
         family.backToParent();
@@ -38,7 +38,7 @@ public class Main {
         family.nextToRight();
         family.setLeft("Diaz");
         family.backToParent();
-        family.setLeft("Melki");
+        family.setRight("Melki");
 
         family.backToParent();
         family.backToParent();
@@ -49,7 +49,7 @@ public class Main {
         family.nextToLeft();
         family.setLeft("Mahen");
         family.backToParent();
-        family.setLeft("Alita");
+        family.setRight("Alita");
 
         family.backToParent();
         family.backToParent();
@@ -57,7 +57,7 @@ public class Main {
         family.nextToRight();
         family.setLeft("Rozaki");
         family.backToParent();
-        family.setLeft("Agung");
+        family.setRight("Agung");
 
 
 
