@@ -53,11 +53,6 @@ public class BasicBinaryTree {
         return root == null;
     }
 
-    public void  doInorderTraversal(){
-        BinaryTreeNode binaryTreeNode = root;
-        inorderTraversal(binaryTreeNode);
-    }
-
 
     String getChildren(BinaryTreeNode node){
         String res = "";
@@ -65,12 +60,44 @@ public class BasicBinaryTree {
         return  res;
     }
 
-    private void inorderTraversal(BinaryTreeNode node){
+    public void  doInorder(){
+        BinaryTreeNode binaryTreeNode = root;
+        printInorder(binaryTreeNode);
+    }
+
+    private void printInorder(BinaryTreeNode node){
         if (node != null) {
-            inorderTraversal(node.left);
+            printInorder(node.left);
             System.out.println(node.data + " : " + getChildren(node));
-            inorderTraversal(node.right);
+            printInorder(node.right);
         }
     }
+
+
+    void doPreorder() {
+        printPreorder(root);
+    }
+
+    void printPreorder(BinaryTreeNode node){
+        if (node != null) {
+            System.out.println(node.data + " : " + getChildren(node));
+            printPreorder(node.left);
+            printPreorder(node.right);
+        }
+    }
+
+
+    void doPostorder() {
+        printPostorder(root);
+    }
+
+    void printPostorder(BinaryTreeNode node){
+        if (node != null) {
+            printPreorder(node.left);
+            printPreorder(node.right);
+            System.out.println(node.data + " : " + getChildren(node));
+        }
+    }
+
 
 }

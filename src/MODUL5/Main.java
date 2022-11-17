@@ -59,7 +59,14 @@ public class Main {
         family.backToParent();
         family.setRight("Agung");
 
-        family.doInorderTraversal();
+        System.out.println("\nIn-Order\nParent : Child");
+        family.doInorder();
+
+        System.out.println("\nPre-Order\nParent : Child");
+        family.doPreorder();
+
+        System.out.println("\nPost-Order\nParent : Child");
+        family.doPostorder();
 
 
 
