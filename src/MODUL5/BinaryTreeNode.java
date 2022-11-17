@@ -11,4 +11,15 @@ public class BinaryTreeNode {
         this.data = data;
     }
 
+    public String getRightData() {
+        if (left == null) return  "-";
+        return right.data;
+    }
+
+    public String getLeftData() {
+        if (left == null) return  "";
+        return left.data + " & ";
+    }
+
+
 }

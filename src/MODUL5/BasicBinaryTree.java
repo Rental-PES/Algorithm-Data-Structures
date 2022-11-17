@@ -54,17 +54,21 @@ public class BasicBinaryTree {
     }
 
     public void  doInorderTraversal(){
-        BinaryTreeNode binaryTreeNode = current;
+        BinaryTreeNode binaryTreeNode = root;
         inorderTraversal(binaryTreeNode);
     }
 
 
+    String getChildren(BinaryTreeNode node){
+        String res = "";
+        res += node.getLeftData()  + node.getRightData();
+        return  res;
+    }
 
     private void inorderTraversal(BinaryTreeNode node){
-        if (node != null)
-        {
+        if (node != null) {
             inorderTraversal(node.left);
-            System.out.print(node.data + " ");
+            System.out.println(node.data + " : " + getChildren(node));
             inorderTraversal(node.right);
         }
     }

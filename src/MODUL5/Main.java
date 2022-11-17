@@ -59,6 +59,7 @@ public class Main {
         family.backToParent();
         family.setRight("Agung");
 
+        family.doInorderTraversal();
 
 
 
