@@ -1,4 +1,4 @@
-package MODUL5;
+package MODUL4;
 
 public class Main {
     public static void main(String[] args) {
@@ -59,6 +59,20 @@ public class Main {
         family.backToParent();
         family.setRight("Agung");
 
+
+
+        System.out.println("\nHubungan");
+        family.isAnak("Putri", "Daus");
+        family.isCicit("Shafa", "Daus");
+        family.isSaudara("Mahen", "Alita");
+        family.isSaudaraJauh("Mahen", "Uno");
+        family.isCucu("Lilul", "Daus");
+        family.isCucuJauh("Melki", "Daden");
+        family.isKeponakan("Rozaki", "Arsan");
+        family.isKeponakanJauh("Rozaki", "Ari");
+        family.isSaudaraJauh("Diaz", "Agung");
+
+
         System.out.println("\nIn-Order\nParent : Child");
         family.doInorder();
 
@@ -67,6 +81,7 @@ public class Main {
 
         System.out.println("\nPost-Order\nParent : Child");
         family.doPostorder();
+
 
 
 
