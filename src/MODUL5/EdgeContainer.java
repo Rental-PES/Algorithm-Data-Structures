@@ -3,6 +3,7 @@ package MODUL5;
 public class EdgeContainer {
     Edge head;
     Edge tail;
+    int size = 0;
 
     public void  addLast(Vertex destination){
         Edge newEdge = new Edge(destination);
@@ -13,6 +14,7 @@ public class EdgeContainer {
             last.next = newEdge;
             tail = newEdge;
         }
+        size+= 1;
     }
 
     private boolean isEmpty(){
